@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,8 +26,6 @@ public class HomeActivity extends AppCompatActivity {
         btn_fredge = findViewById(R.id.btn_fredge);
         btn_recipe = findViewById(R.id.btn_recipe);
         btn_setting = findViewById(R.id.btn_setting);
-
-        Intent intent = getIntent();
 
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override

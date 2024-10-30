@@ -123,92 +123,53 @@
         </FrameLayout>
     </LinearLayout>
 
+    <!-- 하단 메뉴 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:gravity="center"
         android:orientation="horizontal"
-        android:padding="4dp">
-
-        <!-- 나의 냉장고 -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btn_fredge"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:background="@drawable/ic_fredge" />
-
-            <TextView
-                android:id="@+id/tv_myfredge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="나의 냉장고"
-                android:textSize="11sp" />
-        </LinearLayout>
+        android:gravity="center"
+        android:layout_marginTop="16dp">
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.7" />
+            android:layout_weight="1"/>
 
-        <!-- 레시피 -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btn_recipe"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:background="@drawable/ic_recipe" />
-
-            <TextView
-                android:id="@+id/tv_recipe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="레시피 찾기"
-                android:textSize="11sp" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/btn_fredge"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/ic_fredge" />
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.7" />
+            android:layout_weight="1"/>
 
-        <!-- 설정 -->
-        <LinearLayout
-            android:layout_width="0dp"
+        <Button
+            android:id="@+id/btn_recipe"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/ic_recipe"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp" />
+
+        <Space
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_weight="1"/>
 
-            <Button
-                android:id="@+id/btn_setting"
-                android:layout_width="29dp"
-                android:layout_height="29dp"
-                android:background="@drawable/ic_setting" />
+        <Button
+            android:id="@+id/btn_setting"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/ic_setting" />
 
-            <TextView
-                android:id="@+id/tv_setting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="설정"
-                android:textSize="11sp" />
-        </LinearLayout>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
     </LinearLayout>
 
 </LinearLayout>

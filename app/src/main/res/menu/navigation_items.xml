@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/myfredge"
+        android:icon="@drawable/ic_fredge"
+        android:title="myfredge" />
+    <item
+        android:id="@+id/lesipi"
+        android:icon="@drawable/ic_recipe"
+        android:title="lesipi" />
+
+    <item
+    android:id="@+id/setting"
+    android:icon="@drawable/ic_setting"
+    android:title="setting" />
+</menu>
