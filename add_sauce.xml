@@ -178,6 +178,310 @@
                     android:text="바베큐 소스"
                     android:textSize="12sp"/>
             </LinearLayout>
+
+            <!-- 핫소스 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <FrameLayout
+                    android:layout_width="62dp"
+                    android:layout_height="62dp">
+
+                    <ImageView
+                        android:id="@+id/it_hot"
+                        android:layout_width="55dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/it_hot" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add_5"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="top|end"
+                        android:src="@drawable/ic_plus"
+                        android:contentDescription="추가 버튼"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_hot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="핫소스"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 간장 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <FrameLayout
+                    android:layout_width="62dp"
+                    android:layout_height="62dp">
+
+                    <ImageView
+                        android:id="@+id/it_soysauce"
+                        android:layout_width="55dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/it_soysauce" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add_6"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="top|end"
+                        android:src="@drawable/ic_plus"
+                        android:contentDescription="추가 버튼"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_soysauce"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="간장"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 참기름 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <FrameLayout
+                    android:layout_width="62dp"
+                    android:layout_height="62dp">
+
+                    <ImageView
+                        android:id="@+id/it_sesameoil"
+                        android:layout_width="55dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/it_sesameoil" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add_7"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="top|end"
+                        android:src="@drawable/ic_plus"
+                        android:contentDescription="추가 버튼"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_sesameoil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="참기름"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 소금 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <FrameLayout
+                    android:layout_width="62dp"
+                    android:layout_height="62dp">
+
+                    <ImageView
+                        android:id="@+id/it_salt"
+                        android:layout_width="55dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/it_salt" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add_8"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="top|end"
+                        android:src="@drawable/ic_plus"
+                        android:contentDescription="추가 버튼"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_salt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="소금"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 설탕 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <FrameLayout
+                    android:layout_width="62dp"
+                    android:layout_height="62dp">
+
+                    <ImageView
+                        android:id="@+id/it_sugar"
+                        android:layout_width="55dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/it_sugar" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add_9"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="top|end"
+                        android:src="@drawable/ic_plus"
+                        android:contentDescription="추가 버튼"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_sugar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="설탕"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 고추장 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <FrameLayout
+                    android:layout_width="62dp"
+                    android:layout_height="62dp">
+
+                    <ImageView
+                        android:id="@+id/it_gochujang"
+                        android:layout_width="55dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/it_gochujang" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add_10"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="top|end"
+                        android:src="@drawable/ic_plus"
+                        android:contentDescription="추가 버튼"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_gochujang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="고추장"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 굴소스 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <FrameLayout
+                    android:layout_width="62dp"
+                    android:layout_height="62dp">
+
+                    <ImageView
+                        android:id="@+id/it_oyster"
+                        android:layout_width="55dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/it_oyster" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add_11"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="top|end"
+                        android:src="@drawable/ic_plus"
+                        android:contentDescription="추가 버튼"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_oyster"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="굴소스"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 굴소스 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <FrameLayout
+                    android:layout_width="62dp"
+                    android:layout_height="62dp">
+
+                    <ImageView
+                        android:id="@+id/it_redpepperpowder"
+                        android:layout_width="55dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/it_redpepperpowder" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add_12"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="top|end"
+                        android:src="@drawable/ic_plus"
+                        android:contentDescription="추가 버튼"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_redpepperpowder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="고춧가루"
+                    android:textSize="12sp" />
+            </LinearLayout>
         </GridLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

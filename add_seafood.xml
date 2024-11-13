@@ -67,7 +67,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:gravity="center"
-                        android:text="문어"
+                        android:text="고등어"
                         android:textSize="12sp" />
                 </LinearLayout>
 
@@ -91,7 +91,7 @@
                             android:src="@drawable/it_squid" />
 
                         <ImageButton
-                            android:id="@+id/btn_add_3"
+                            android:id="@+id/btn_add_2"
                             android:layout_width="11dp"
                             android:layout_height="11dp"
                             android:layout_gravity="top|end"
@@ -129,7 +129,7 @@
                             android:src="@drawable/it_shrimp" />
 
                         <ImageButton
-                            android:id="@+id/btn_add_4"
+                            android:id="@+id/btn_add_3"
                             android:layout_width="11dp"
                             android:layout_height="11dp"
                             android:layout_gravity="top|end"
@@ -167,7 +167,7 @@
                             android:src="@drawable/it_crab" />
 
                         <ImageButton
-                            android:id="@+id/btn_add_5"
+                            android:id="@+id/btn_add_4"
                             android:layout_width="11dp"
                             android:layout_height="11dp"
                             android:layout_gravity="top|end"
@@ -185,7 +185,199 @@
                         android:textSize="12sp" />
                 </LinearLayout>
 
+                <!-- 문어 -->
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <FrameLayout
+                        android:layout_width="62dp"
+                        android:layout_height="62dp">
+
+                        <ImageView
+                            android:id="@+id/it_salmon"
+                            android:layout_width="49dp"
+                            android:layout_height="47dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/it_octopus" />
+
+                        <ImageButton
+                            android:id="@+id/btn_add_5"
+                            android:layout_width="11dp"
+                            android:layout_height="11dp"
+                            android:layout_gravity="top|end"
+                            android:src="@drawable/ic_plus"
+                            android:contentDescription="추가 버튼"/>
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tv_octopus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="문어"
+                        android:textSize="12sp" />
+                    </LinearLayout>
+                <!-- 연어 -->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <FrameLayout
+                        android:layout_width="62dp"
+                        android:layout_height="62dp">
+
+                        <ImageView
+                            android:id="@+id/it_octopus"
+                            android:layout_width="49dp"
+                            android:layout_height="47dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/it_salmon" />
+
+                        <ImageButton
+                            android:id="@+id/btn_add_6"
+                            android:layout_width="11dp"
+                            android:layout_height="11dp"
+                            android:layout_gravity="top|end"
+                            android:src="@drawable/ic_plus"
+                            android:contentDescription="추가 버튼"/>
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tv_salmon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="연어"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- 조개류 -->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <FrameLayout
+                        android:layout_width="62dp"
+                        android:layout_height="62dp">
+
+                        <ImageView
+                            android:id="@+id/it_clam"
+                            android:layout_width="49dp"
+                            android:layout_height="47dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/it_clam" />
+
+                        <ImageButton
+                            android:id="@+id/btn_add_7"
+                            android:layout_width="11dp"
+                            android:layout_height="11dp"
+                            android:layout_gravity="top|end"
+                            android:src="@drawable/ic_plus"
+                            android:contentDescription="추가 버튼"/>
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tv_clam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="조개"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- 방어 -->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <FrameLayout
+                        android:layout_width="62dp"
+                        android:layout_height="62dp">
+
+                        <ImageView
+                            android:id="@+id/it_yellowtail"
+                            android:layout_width="49dp"
+                            android:layout_height="47dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/it_yellowtail" />
+
+                        <ImageButton
+                            android:id="@+id/btn_add_8"
+                            android:layout_width="11dp"
+                            android:layout_height="11dp"
+                            android:layout_gravity="top|end"
+                            android:src="@drawable/ic_plus"
+                            android:contentDescription="추가 버튼"/>
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tv_yellowtail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="방어"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!--  성게  -->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <FrameLayout
+                        android:layout_width="62dp"
+                        android:layout_height="62dp">
+
+                        <ImageView
+                            android:id="@+id/it_urchin"
+                            android:layout_width="49dp"
+                            android:layout_height="47dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/it_urchin" />
+
+                        <ImageButton
+                            android:id="@+id/btn_add_9"
+                            android:layout_width="11dp"
+                            android:layout_height="11dp"
+                            android:layout_gravity="top|end"
+                            android:src="@drawable/ic_plus"
+                            android:contentDescription="추가 버튼"/>
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tv_urchin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="성게"
+                        android:textSize="12sp" />
+                </LinearLayout>
             </GridLayout>
         </LinearLayout>
     </ScrollView>

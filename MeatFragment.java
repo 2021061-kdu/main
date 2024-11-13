@@ -29,18 +29,21 @@ public class MeatFragment extends Fragment {
 
         // 버튼 ID 배열
         int[] buttonIds = {
-                R.id.btn_add_1, R.id.btn_add_2, R.id.btn_add_3, R.id.btn_add_4, R.id.btn_add_5
+                R.id.btn_add_1, R.id.btn_add_2, R.id.btn_add_3, R.id.btn_add_4, R.id.btn_add_5, R.id.btn_add_6,
+                R.id.btn_add_7, R.id.btn_add_8, R.id.btn_add_9, R.id.btn_add_10
         };
 
         // 재료 이름 배열
         String[] itemNames = {
-                "소고기", "돼지고기", "닭고기", "양고기", "햄"
+                "소고기", "돼지고기", "닭고기", "양고기", "햄", "소시지",
+                "오리고기", "양념고기", "닭다리", "닭가슴살"
         };
 
         // 재료 이미지 리소스 배열
         int[] itemImages = {
-                R.drawable.it_beef, R.drawable.it_pork, R.drawable.it_chicken,
-                R.drawable.it_lamb, R.drawable.it_ham
+                R.drawable.it_beef, R.drawable.it_pork, R.drawable.it_chicken,R.drawable.it_lamb
+                , R.drawable.it_ham, R.drawable.it_sausage,R.drawable.it_duck, R.drawable.it_marinatedmeat,
+                 R.drawable.it_drumsticks, R.drawable.it_breast
         };
 
         // 각 버튼에 클릭 리스너 추가

@@ -29,18 +29,23 @@ public class SeafoodFragment extends Fragment {
 
         // 버튼 ID 배열
         int[] buttonIds = {
-                R.id.btn_add_1, R.id.btn_add_2, R.id.btn_add_3, R.id.btn_add_4
+                R.id.btn_add_1, R.id.btn_add_2, R.id.btn_add_3, R.id.btn_add_4,
+                R.id.btn_add_5, R.id.btn_add_6, R.id.btn_add_7, R.id.btn_add_8,
+                R.id.btn_add_9
+
         };
 
         // 재료 이름 배열
         String[] itemNames = {
-                "고등어", "오징어", "새우", "게"
+                "고등어", "오징어", "새우", "게","문어", "연어", "조게", "방어", "성게"
         };
 
         // 재료 이미지 리소스 배열
         int[] itemImages = {
-                R.drawable.it_mackerel, R.drawable.it_squid, R.drawable.it_shrimp,
-                R.drawable.it_crab
+                R.drawable.it_mackerel, R.drawable.it_squid, R.drawable.it_shrimp, R.drawable.it_crab,
+                R.drawable.it_octopus, R.drawable.it_salmon, R.drawable.it_clam, R.drawable.it_yellowtail,
+                R.drawable.it_urchin
+
         };
 
         // 각 버튼에 클릭 리스너 추가

@@ -217,7 +217,195 @@
                     android:text="햄"
                     android:textSize="12sp" />
             </LinearLayout>
+            <!-- 소시지 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
 
+                <FrameLayout
+                    android:layout_width="62dp"
+                    android:layout_height="62dp">
+
+                    <ImageView
+                        android:id="@+id/it_sausage"
+                        android:layout_width="49dp"
+                        android:layout_height="47dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/it_sausage" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add_6"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="top|end"
+                        android:src="@drawable/ic_plus"
+                        android:contentDescription="추가 버튼"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_sausage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="소시지"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 오리고기 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <FrameLayout
+                    android:layout_width="62dp"
+                    android:layout_height="62dp">
+
+                    <ImageView
+                        android:id="@+id/it_duck"
+                        android:layout_width="49dp"
+                        android:layout_height="47dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/it_duck" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add_7"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="top|end"
+                        android:src="@drawable/ic_plus"
+                        android:contentDescription="추가 버튼"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_duck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="오리고기"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 양념고기 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <FrameLayout
+                    android:layout_width="62dp"
+                    android:layout_height="62dp">
+
+                    <ImageView
+                        android:id="@+id/it_marinatedmeat"
+                        android:layout_width="49dp"
+                        android:layout_height="47dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/it_marinatedmeat" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add_8"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="top|end"
+                        android:src="@drawable/ic_plus"
+                        android:contentDescription="추가 버튼"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_marinatedmeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="양념고기"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 닭다리 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <FrameLayout
+                    android:layout_width="62dp"
+                    android:layout_height="62dp">
+
+                    <ImageView
+                        android:id="@+id/it_drumsticks"
+                        android:layout_width="49dp"
+                        android:layout_height="47dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/it_drumsticks" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add_9"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="top|end"
+                        android:src="@drawable/ic_plus"
+                        android:contentDescription="추가 버튼"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_drumsticks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="닭다리"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 닭가슴살 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <FrameLayout
+                    android:layout_width="62dp"
+                    android:layout_height="62dp">
+
+                    <ImageView
+                        android:id="@+id/it_breast"
+                        android:layout_width="49dp"
+                        android:layout_height="47dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/it_breast" />
+
+                    <ImageButton
+                        android:id="@+id/btn_add_10"
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:layout_gravity="top|end"
+                        android:src="@drawable/ic_plus"
+                        android:contentDescription="추가 버튼"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_breast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="닭가슴살"
+                    android:textSize="12sp" />
+            </LinearLayout>
         </GridLayout>
     </ScrollView>
 

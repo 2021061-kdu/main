@@ -29,18 +29,18 @@ public class DairyFragment extends Fragment {
 
         // 버튼 ID 배열
         int[] buttonIds = {
-                R.id.btn_add_1, R.id.btn_add_2, R.id.btn_add_3, R.id.btn_add_4
+                R.id.btn_add_1, R.id.btn_add_2, R.id.btn_add_3, R.id.btn_add_4, R.id.btn_add_5, R.id.btn_add_6
         };
 
         // 재료 이름 배열
         String[] itemNames = {
-                "우유", "요거트", "치즈", "요구르트"
+                "우유", "요거트", "치즈", "요구르트", "두유", "마가린"
         };
 
         // 재료 이미지 리소스 배열
         int[] itemImages = {
                 R.drawable.it_milk, R.drawable.it_yogurt, R.drawable.it_cheese,
-                R.drawable.it_yogurt2
+                R.drawable.it_yogurt2, R.drawable.it_soymilk, R.drawable.it_margarine
         };
 
         // 각 버튼에 클릭 리스너 추가

@@ -28,18 +28,21 @@ public class SauceFragment extends Fragment {
 
         // 버튼 ID 배열 (소스 추가 버튼)
         int[] buttonIds = {
-                R.id.btn_add_1, R.id.btn_add_2, R.id.btn_add_3, R.id.btn_add_4
+                R.id.btn_add_1, R.id.btn_add_2, R.id.btn_add_3, R.id.btn_add_4,
+                R.id.btn_add_5, R.id.btn_add_6, R.id.btn_add_7, R.id.btn_add_8,
+                R.id.btn_add_9, R.id.btn_add_10, R.id.btn_add_11, R.id.btn_add_12
         };
 
         // 재료 이름 배열 (소스 종류)
         String[] itemNames = {
-                "케첩", "마요네즈", "머스타드", "바베큐 소스"
+                "케첩", "마요네즈", "머스타드", "바베큐 소스", "핫소스", "간장", "참기름", "소금", "설탕", "고추장", "굴소스", "고춧가루"
         };
 
         // 재료 이미지 리소스 배열 (소스 이미지)
         int[] itemImages = {
-                R.drawable.it_ketchup, R.drawable.it_mayonnaise, R.drawable.it_mustard,
-                R.drawable.it_bbq
+                R.drawable.it_ketchup, R.drawable.it_mayonnaise, R.drawable.it_mustard,R.drawable.it_bbq,
+                 R.drawable.it_hot, R.drawable.it_soysauce, R.drawable.it_sesameoil,R.drawable.it_salt,
+                 R.drawable.it_sugar, R.drawable.it_gochujang, R.drawable.it_oyster, R.drawable.it_redpepperpowder
         };
 
         // 각 버튼에 클릭 리스너 추가
