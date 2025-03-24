@@ -63,6 +63,8 @@
         <activity
             android:name=".AddDetailActivity"
             android:exported="true" />
+        <activity android:name=".BarcodeScannerActivity" />
+
         <activity
             android:name=".IntroActivity"
             android:exported="true">
