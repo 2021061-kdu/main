@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
@@ -21,6 +20,8 @@ import androidx.core.content.ContextCompat;
 
 import java.util.Calendar;
 import android.util.Log; // Log 사용
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call; // Retrofit Call 사용
 import retrofit2.Callback; // Callback 사용
 import retrofit2.Response; // Response 사용
@@ -97,8 +98,16 @@ public class SettingActivity extends AppCompatActivity {
 
     // 상품 정보 조회
     private void fetchProductInfo(String barcode) {
+        // Retrofit 로깅 설정
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .build();
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://world.openfoodfacts.org/")
+                .client(client)  // OkHttpClient 설정
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -108,22 +117,27 @@ public class SettingActivity extends AppCompatActivity {
         call.enqueue(new Callback<ProductResponse>() {
             @Override
             public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    ProductResponse.Product product = response.body().product;
-                    Log.d("Barcode", "Product Name: " + product.product_name);
-                    Log.d("Barcode", "Brand: " + product.brands);
-                    Log.d("Barcode", "Image URL: " + product.image_url);
-                    Toast.makeText(SettingActivity.this, "상품: " + product.product_name, Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        ProductResponse.Product product = response.body().product;
+                        Log.d("Barcode", "Product Name: " + product.product_name);
+                        Log.d("Barcode", "Brand: " + product.brands);
+                        Log.d("Barcode", "Image URL: " + product.image_url);
+                        Toast.makeText(SettingActivity.this, "상품: " + product.product_name, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.e("Barcode", "No product found for barcode: " + barcode);
+                        Toast.makeText(SettingActivity.this, "해당 바코드의 제품을 찾을 수 없습니다.", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Log.e("Barcode", "No product found for barcode: " + barcode);
-                    Toast.makeText(SettingActivity.this, "해당 바코드의 제품을 찾을 수 없습니다.", Toast.LENGTH_SHORT).show();
+                    Log.e("Barcode", "API 응답 실패: " + response.code());
+                    Toast.makeText(SettingActivity.this, "상품 정보를 불러오는 데 실패했습니다. 응답 코드: " + response.code(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ProductResponse> call, Throwable t) {
-                Log.e("Barcode", "API call failed", t);
-                Toast.makeText(SettingActivity.this, "상품 정보를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show();
+                Log.e("Barcode", "API 호출 실패", t);
+                Toast.makeText(SettingActivity.this, "상품 정보를 불러오는 데 실패했습니다. 에러: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -57,6 +57,9 @@ dependencies {
     // Retrofit 의존성 (API 호출)
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    // OkHttp 및 HttpLoggingInterceptor 의존성 추가
+    implementation ("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     //카메라 의존
     implementation ("androidx.camera:camera-core:1.4.1")
