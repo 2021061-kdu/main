@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
-import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,32 +9,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.VolleyError;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     private static final int NOTIFICATION_PERMISSION_REQUEST_CODE = 1001;
-    private Button btnEdit, btnDelete, btnPlus, btnSetting, btnRecommend;
+    private static final int CAMERA_PERMISSION_REQUEST_CODE = 1;
+
+    private Button btnEdit, btnDelete, btnPlus, btnSetting, btnRecipe, btnRecipeView;
     private TextView tvTitle;
     private RecyclerView recyclerViewIngredients;
     private RecyclerView recyclerViewIngredientsFreezer;
-    private RecyclerView recyclerViewRecipes;
     private IngredientAdapter ingredientAdapter;
     private IngredientAdapter freezerAdapter;
-    private RecipeAdapter recipeAdapter; // 레시피 어댑터 추가
     private boolean isDeleteMode = false;  // 삭제 모드 상태
-    private List<Ingredient> fridgeIngredients = new ArrayList<>();
-    private List<Ingredient> freezerIngredients = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +44,13 @@ public class HomeActivity extends AppCompatActivity {
 
         // 레이아웃 요소 초기화
         tvTitle = findViewById(R.id.tv_title);
-        btnEdit = findViewById(R.id.btn_edit);
         btnDelete = findViewById(R.id.btn_delete);
         btnPlus = findViewById(R.id.btn_plus);
         btnSetting = findViewById(R.id.btn_setting);
-        btnRecommend = findViewById(R.id.btn_recommend); // 추천 버튼
+        btnRecipe = findViewById(R.id.btn_recipe);
+        btnRecipeView = findViewById(R.id.btn_recipe_view);
         recyclerViewIngredients = findViewById(R.id.recycler_view_ingredients_fridge);
         recyclerViewIngredientsFreezer = findViewById(R.id.recycler_view_ingredients_freezer);
-        recyclerViewRecipes = findViewById(R.id.recycler_view_recipes); // 레시피 RecyclerView
 
         // RecyclerView 레이아웃 매니저 설정
         recyclerViewIngredients.setLayoutManager(new GridLayoutManager(this, 4));
@@ -65,106 +59,95 @@ public class HomeActivity extends AppCompatActivity {
         recyclerViewIngredientsFreezer.setLayoutManager(new GridLayoutManager(this, 4));
         recyclerViewIngredientsFreezer.addItemDecoration(new GridSpacingItemDecoration(4, 8, true));
 
-        recyclerViewRecipes.setLayoutManager(new LinearLayoutManager(this)); // 세로형 레이아웃 매니저
-
         // 재료 리스트 불러오기
         loadIngredients();
 
         // 삭제 버튼 클릭 리스너 설정
-        btnDelete.setOnClickListener(v -> {
-            isDeleteMode = !isDeleteMode;
-            ingredientAdapter.setDeleteMode(isDeleteMode);
-            freezerAdapter.setDeleteMode(isDeleteMode);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 삭제 모드를 토글
+                isDeleteMode = !isDeleteMode;
+                ingredientAdapter.setDeleteMode(isDeleteMode); // 냉장실 어댑터에 삭제 모드 설정
+                freezerAdapter.setDeleteMode(isDeleteMode);   // 냉동실 어댑터에 삭제 모드 설정
+            }
         });
 
         // 설정 버튼 클릭 리스너
-        btnSetting.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, SettingActivity.class);
-            startActivity(intent);
+        btnSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, SettingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // 레시피 찾기 버튼 클릭 리스너(모든 레시피)
+        btnRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, RecipeInfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // 레시피 보기 버튼 클릭 리스너
+        btnRecipeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 냉장고와 냉동실에 있는 재료들 추출
+                List<String> ingredients = getIngredientsFromRecyclerViews();
+
+                Intent intent = new Intent(HomeActivity.this, RecipeActivity.class);
+                intent.putStringArrayListExtra("ingredients", (ArrayList<String>) ingredients); // 재료 목록 전달
+                startActivity(intent);
+            }
         });
 
         // 추가 버튼 클릭 리스너 설정
-        btnPlus.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, AddIngredientActivity.class);
-            startActivity(intent);
-        });
-
-        // 레시피 추천 버튼 클릭 리스너
-        btnRecommend.setOnClickListener(v -> recommendRecipes());
-    }
-
-    private void recommendRecipes() {
-        // 추천 알고리즘: 단순히 이름으로 레시피 생성 (예시)
-        List<Recipe> recommendedRecipes = new ArrayList<>();
-
-        if (fridgeIngredients.isEmpty() && freezerIngredients.isEmpty()) {
-            Toast.makeText(this, "추천할 재료가 없습니다.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (hasIngredients("김치", "밥")) {
-            recommendedRecipes.add(new Recipe("김치볶음밥", Arrays.asList("김치", "밥")));
-        }
-        if (hasIngredients("계란", "파")) {
-            recommendedRecipes.add(new Recipe("계란말이", Arrays.asList("계란", "파")));
-        }
-
-        if (recommendedRecipes.isEmpty()) {
-            Toast.makeText(this, "추천 가능한 레시피가 없습니다.", Toast.LENGTH_SHORT).show();
-        } else {
-            recipeAdapter = new RecipeAdapter(recommendedRecipes);
-            recyclerViewRecipes.setAdapter(recipeAdapter);
-        }
-    }
-
-    private boolean hasIngredients(String... ingredients) {
-        List<String> allIngredients = new ArrayList<>();
-        for (Ingredient ingredient : fridgeIngredients) {
-            allIngredients.add(ingredient.getName());
-        }
-        for (Ingredient ingredient : freezerIngredients) {
-            allIngredients.add(ingredient.getName());
-        }
-
-        for (String required : ingredients) {
-            if (!allIngredients.contains(required)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private void loadIngredients() {
-        ApiRequest apiRequest = new ApiRequest(this);
-        apiRequest.fetchIngredients(new ApiRequest.IngredientFetchListener() {
+        btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFetchSuccess(List<Ingredient> ingredients) {
-                fridgeIngredients.clear();
-                freezerIngredients.clear();
-
-                for (Ingredient ingredient : ingredients) {
-                    if ("냉동".equals(ingredient.getStorageLocation())) {
-                        freezerIngredients.add(ingredient);
-                    } else {
-                        fridgeIngredients.add(ingredient);
-                    }
+            public void onClick(View v) {
+                // 카메라 권한 체크
+                if (ContextCompat.checkSelfPermission(HomeActivity.this, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                    // 카메라 권한이 있으면 카메라 실행
+                    startCamera();
+                } else {
+                    // 카메라 권한이 없으면 권한 요청
+                    ActivityCompat.requestPermissions(HomeActivity.this, new String[]{android.Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
                 }
-
-                ingredientAdapter = new IngredientAdapter(fridgeIngredients, HomeActivity.this);
-                recyclerViewIngredients.setAdapter(ingredientAdapter);
-
-                freezerAdapter = new IngredientAdapter(freezerIngredients, HomeActivity.this);
-                recyclerViewIngredientsFreezer.setAdapter(freezerAdapter);
-
-                ingredientAdapter.notifyDataSetChanged();
-                freezerAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFetchError(VolleyError error) {
-                Toast.makeText(HomeActivity.this, "재료를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show();
             }
         });
+
+        TextView tvViewDetails = findViewById(R.id.tv_view_details);
+        tvViewDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 상세보기 기능 구현
+                Intent intent = new Intent(HomeActivity.this, FreezerDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 권한이 허용됨 -> 카메라 실행
+                startCamera();
+            } else {
+                // 권한이 거부됨 -> 메시지 또는 다른 처리
+                Toast.makeText(HomeActivity.this, "카메라 권한이 거부되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    // 카메라 실행을 위한 메서드  ScanReceipt 액티비티로 이동
+    private void startCamera() {
+        Intent intent = new Intent(HomeActivity.this, ScanReceipt.class);
+        startActivity(intent);
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
@@ -180,14 +163,14 @@ public class HomeActivity extends AppCompatActivity {
 
         @Override
         public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            int position = parent.getChildAdapterPosition(view);
-            int column = position % spanCount;
+            int position = parent.getChildAdapterPosition(view); // 아이템의 위치
+            int column = position % spanCount; // 현재 아이템이 위치한 열
 
             if (includeEdge) {
                 outRect.left = spacing - column * spacing / spanCount;
                 outRect.right = (column + 1) * spacing / spanCount;
 
-                if (position < spanCount) {
+                if (position < spanCount) { // 첫 번째 줄
                     outRect.top = spacing;
                 }
                 outRect.bottom = spacing;
@@ -200,5 +183,61 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    // 저장된 재료들을 RecyclerView에서 추출하는 메서드
+    private List<String> getIngredientsFromRecyclerViews() {
+        List<String> ingredients = new ArrayList<>();
+
+        // 냉장고와 냉동실에 있는 재료들 추출
+        if (ingredientAdapter != null) {
+            for (Ingredient ingredient : ingredientAdapter.getIngredients()) {
+                ingredients.add(ingredient.getName());
+            }
+        }
+
+        if (freezerAdapter != null) {
+            for (Ingredient ingredient : freezerAdapter.getIngredients()) {
+                ingredients.add(ingredient.getName());
+            }
+        }
+
+        return ingredients;
+    }
+
+    private void loadIngredients() {
+        ApiRequest apiRequest = new ApiRequest(this);
+        apiRequest.fetchIngredients(new ApiRequest.IngredientFetchListener() {
+            @Override
+            public void onFetchSuccess(List<Ingredient> ingredients) {
+                // 재료를 냉장실과 냉동실 리스트로 분리
+                List<Ingredient> fridgeIngredients = new ArrayList<>();
+                List<Ingredient> freezerIngredients = new ArrayList<>();
+
+                for (Ingredient ingredient : ingredients) {
+                    if ("냉동".equals(ingredient.getStorageLocation())) {
+                        freezerIngredients.add(ingredient);
+                    } else {
+                        fridgeIngredients.add(ingredient);
+                    }
+                }
+
+                // 냉장실과 냉동실 각각에 대한 어댑터 설정
+                ingredientAdapter = new IngredientAdapter(fridgeIngredients, HomeActivity.this);
+                recyclerViewIngredients.setAdapter(ingredientAdapter);
+
+                freezerAdapter = new IngredientAdapter(freezerIngredients, HomeActivity.this);
+                recyclerViewIngredientsFreezer.setAdapter(freezerAdapter);
+
+                ingredientAdapter.notifyDataSetChanged();
+                freezerAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFetchError(VolleyError error) {
+                // 오류 발생 시 메시지 표시
+                Toast.makeText(HomeActivity.this, "재료를 불러오는 데 실패했습니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
